@@ -102,7 +102,7 @@ services:
     environment:
       - VIRTUAL_HOST=smarttelecomec.com
       - LETSENCRYPT_HOST=smarttelecomec.com
-      - LETSENCRYPT_EMAIL=admin@smarttelecomec.com
+      - LETSENCRYPT_EMAIL=elvisloja@gmail.com
     expose:
       - "80"
     depends_on:
