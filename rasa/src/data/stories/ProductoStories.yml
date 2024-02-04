@@ -1,0 +1,33 @@
+version: '3.1'
+
+stories:
+
+- story: Story for caracteristica_producto
+  steps:
+  - intent: caracteristica_producto
+  - action: action_caracteristicas_producto
+
+- story: Story for precio_producto
+  steps:
+  - intent: precio_producto
+  - action: action_precio_producto
+
+- story: Story for productos_ofrecen
+  steps:
+  - intent: productos_ofrecen
+  - action: utter_productos_ofrecen
+
+- story: Story for producto
+  steps:
+  - intent: producto
+  - action: action_informacion_producto
+
+- story: Story for lista_productos
+  steps:
+  - intent: lista_productos
+  - action: action_lista_productos
+
+- story: Story for pdf_producto
+  steps:
+  - intent: pdf_producto
+  - action: action_pdf_producto

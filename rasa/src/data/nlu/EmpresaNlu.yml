@@ -1,0 +1,53 @@
+version: '3.1'
+
+nlu:
+- intent: Existen_opciones_de_personalización_para_adaptar_los_productos_a_necesidades_específicas
+  examples: |
+    - Existen opciones de personalización para adaptar los productos a necesidades específicas
+    - Hay opciones de personalización disponibles para que los clientes adapten los productos según sus necesidades y gustos
+    - Se brinda la posibilidad de realizar ajustes o personalizaciones en los productos para satisfacer necesidades específicas
+- intent: La_empresa_brinda_soporte_técnico_en_caso_de_problemas_con_los_productos_adquiridos
+  examples: |
+    - La empresa brinda soporte técnico en caso de problemas con los productos adquiridos
+    - Ofrecen algún tipo de soporte técnico para resolver problemas relacionados con los productos comprados
+    - Cuentan con un equipo de soporte dedicado para abordar problemas técnicos o consultas de los clientes
+    - Hay algún proceso establecido para recibir asistencia técnica en situaciones donde los clientes enfrenten problemas con los productos adquiridos
+- intent: Hay_algún_programa_de_fidelidad_o_beneficios_para_clientes_recurrentes
+  examples: |
+    - Hay algún programa de fidelidad o beneficios para clientes recurrentes
+    - ¿Ofrecen algún tipo de programa de lealtad para clientes habituales?
+    - Existen ventajas especiales para los clientes recurrentes, como descuentos exclusivos o regalos
+- intent: Cómo_puedo_contactar_al_personal_de_ventas
+  examples: |
+    - Cómo puedo contactar al personal de ventas
+    - Cuál es el contacto del agente de ventas
+    - Cómo puedo ponerme en contacto con la empresa
+    - Existe algún punto de contacto disponible
+- intent: Cuál_es_la_política_de_devolución_y_reembolso_en_caso_de_insatisfacción_con_un_producto
+  examples: |
+    - Cuál es la política de devolución y reembolso en caso de insatisfacción con un producto
+    - La empresa tiene alguna política específica de reembolso para clientes insatisfechos con sus compras
+    - uáles son los pasos que un cliente debe seguir para iniciar el proceso de devolución y obtener un reembolso si no está satisfecho con un producto
+    - Politicas de devolucion
+    - El producto no me funciona y quiero devolverlo
+    - Quiero hacer una devolucion
+- intent: La_empresa_organiza_eventos_o_webinars_para_educar_a_los_clientes_sobre_sus_productos
+  examples: |
+    - La empresa organiza eventos o webinars para educar a los clientes sobre sus productos
+    - Se realizan eventos educativos para clientes con el objetivo de profundizar en el entendimiento de los productos ofrecidos
+    - Hay cursos sobre la utilización de los productos
+- intent: La_empresa_ofrece_demos_o_pruebas_de_sus_productos_antes_de_la_compra
+  examples: |
+    - La empresa ofrece demos o pruebas de sus productos antes de la compra
+    - Proporcionan demostraciones o pruebas gratuitas de sus productos para que los clientes puedan probarlos antes de comprar
+    - Ofrecen muestras gratuitas o demostraciones para que los clientes puedan evaluar la calidad de sus productos
+- intent: Cual_es_la_vision_de_la_empresa
+  examples: |
+    - Cual es la vision de la empresa
+    - Dime la vision empresa
+    - Vision de la empresa
+- intent: Cual_es_la_mision_de_la_empresa
+  examples: |
+    - Cual es la mision de la empresa
+    - Dime la mision de la empresa
+    - Mision de la empresa

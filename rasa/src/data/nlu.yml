@@ -1,0 +1,63 @@
+version: '3.1'
+
+# intent con el que iniciara la conversacion con el chatbot
+
+nlu:
+- intent: inicio
+  examples: |
+    - inicio
+    - hola
+    - hoal
+    - hey
+    - estas ahi
+    - hola hola
+    - .
+    - bot
+    - estas alli bot
+    - bot
+    - holaa
+    - hi
+  
+
+- intent: afirmacion_informacion_producto
+  examples: |
+    - Si
+    - Wi
+    - Yes
+    - Si si si
+    - Exacto
+    - Siuuu
+    - Suuuu
+    - So
+    - Se 
+
+- intent: negacion_informacion_producto
+  examples: |
+    - No
+    - Nop
+    - Now
+    - No no no
+    - Negativo
+    - Nell
+    - Na
+    - Nah
+    - Niet
+  
+
+# intent para activar el formulario
+- intent: activate_form_usuario
+  examples: |
+    - activate_form_usuario
+    - activate form usuario
+
+- intent: despedida
+  examples: |
+    - gracias
+    - muchas gracias
+    - adios
+    - adios adios
+    - chao bot
+    - chao chao
+    - me voy
+    - me la saco
+

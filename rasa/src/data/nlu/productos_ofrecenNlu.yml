@@ -1,0 +1,8 @@
+version: '3.1'
+
+nlu:
+- intent: productos_ofrecen
+  examples: |
+    -  ¿Podrías hablarme sobre los productos que tienen
+    - Qué tipo de productos ofrecen
+    - ¿Podrías explicarme la variedad de productos que tienen?

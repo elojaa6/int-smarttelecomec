@@ -1,0 +1,52 @@
+version: "3.1"
+
+#Storie con el que comenzara la conversacion
+
+stories:
+
+  - story: Formulario registrar al usuario
+    steps:
+    - intent: inicio   
+    - action: utter_formulario
+    - action: form_usuario
+    - active_loop: form_usuario
+    - slot_was_set:
+      - requested_slot: nombre_usuario
+    - slot_was_set:
+      - requested_slot: correo_usuario
+    - slot_was_set:
+      - requested_slot: telefono_usuario
+    - slot_was_set:
+      - requested_slot: direccion_usuario
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null 
+    - action: action_registrar_usuario
+    - action: action_inicio
+
+
+# Historia de productos
+
+  - story: historia conversacion productos
+    steps:
+    - intent: lista_productos
+    - action: action_lista_productos
+    - intent: afirmacion_informacion_producto
+    - action: utter_afirmacion_informacion_producto
+    - intent: producto
+    - action: action_informacion_producto
+    - intent: negacion_informacion_producto
+    - action: utter_negacion_informacion_producto
+
+# Historia despedida
+
+  - story: historia conversacion productos
+    steps:
+    - intent: despedida
+    - action: utter_despedida
+
+
+
+
+
+

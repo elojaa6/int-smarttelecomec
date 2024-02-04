@@ -1,0 +1,26 @@
+version: "3.1"
+
+rules:
+
+- rule: Activate form usuario
+  steps:
+  - intent: activate_form_usuario
+  - action: form_usuario 
+  - active_loop: form_usuario
+
+- rule: Submit form usuario
+  condition: 
+  - active_loop: form_usuario
+  steps:
+  - action: form_usuario
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_registrar_usuario
+  - action: action_inicio
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+

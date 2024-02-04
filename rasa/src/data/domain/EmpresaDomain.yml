@@ -1,0 +1,35 @@
+version: '3.1'
+
+intents:
+  - Existen_opciones_de_personalización_para_adaptar_los_productos_a_necesidades_específicas
+  - La_empresa_brinda_soporte_técnico_en_caso_de_problemas_con_los_productos_adquiridos
+  - Hay_algún_programa_de_fidelidad_o_beneficios_para_clientes_recurrentes
+  - Cómo_puedo_contactar_al_personal_de_ventas
+  - Cuál_es_la_política_de_devolución_y_reembolso_en_caso_de_insatisfacción_con_un_producto
+  - La_empresa_organiza_eventos_o_webinars_para_educar_a_los_clientes_sobre_sus_productos
+  - La_empresa_ofrece_demos_o_pruebas_de_sus_productos_antes_de_la_compra
+  - Cual_es_la_vision_de_la_empresa
+  - Cual_es_la_mision_de_la_empresa
+
+responses:
+  utter_Existen_opciones_de_personalización_para_adaptar_los_productos_a_necesidades_específicas:
+    - text: "¡Absolutamente! En nuestra empresa, entendemos que cada cliente tiene necesidades únicas. Por eso, ofrecemos opciones de personalización para adaptar nuestros productos a tus necesidades específicas. Ya sea ajustar características, agregar funciones especiales o modificar detalles según tus preferencias, nuestro equipo está aquí para colaborar contigo y asegurarse de que obtengas exactamente lo que necesitas. Si tienes solicitudes específicas de personalización, no dudes en comunicarte con nosotros. Estamos comprometidos a proporcionarte soluciones a medida que se adapten perfectamente a tus requisitos."
+  utter_La_empresa_brinda_soporte_técnico_en_caso_de_problemas_con_los_productos_adquiridos:
+    - text: "¡Claro! En nuestra empresa, tu satisfacción y tranquilidad son nuestra prioridad. Ofrecemos un servicio de soporte técnico dedicado para ayudarte en caso de cualquier problema con los productos que adquieras. Nuestro equipo de expertos está disponible para responder a tus preguntas, solucionar problemas técnicos y brindarte asistencia personalizada. Puedes ponerte en contacto con nuestro servicio de soporte técnico a través de [número de teléfono] o [correo electrónico]. Estamos aquí para garantizar que tengas una experiencia sin inconvenientes con nuestros productos."
+  utter_Hay_algún_programa_de_fidelidad_o_beneficios_para_clientes_recurrentes:
+    - text: "¡Sí, contamos con un programa de fidelidad diseñado especialmente para nuestros clientes recurrentes! Ofrecemos una variedad de beneficios, como descuentos exclusivos, ofertas especiales y recompensas por tu lealtad. Para obtener más detalles y comenzar a disfrutar de estos beneficios, te recomendamos que visites nuestra página web o te pongas en contacto con nuestro servicio de atención al cliente. ¡Estamos emocionados de premiar tu lealtad!"
+  utter_Cómo_puedo_contactar_al_personal_de_ventas:
+    - text: "Puede ponerse en contacto con la empresa llamando al [número de teléfono] o enviando un correo electrónico a [dirección de correo electrónico]."
+  utter_Cuál_es_la_política_de_devolución_y_reembolso_en_caso_de_insatisfacción_con_un_producto:
+    - text: "Entendemos que la satisfacción del cliente es fundamental, por lo que contamos con una política de devolución y reembolso flexible. Si no estás satisfecho con tu producto, puedes devolverlo dentro de [número de días] días desde la fecha de compra y recibir un reembolso completo. Aseguramos que el proceso de devolución sea sencillo y sin complicaciones.
+Para iniciar el proceso de devolución, comunícate con nuestro equipo de servicio al cliente a través de [número de teléfono] o [correo electrónico]. Estaremos encantados de ayudarte y asegurarnos de que recibas la atención que mereces. Tu satisfacción es nuestra prioridad número uno, y estamos comprometidos a garantizar una experiencia positiva con nuestros productos."
+  utter_La_empresa_organiza_eventos_o_webinars_para_educar_a_los_clientes_sobre_sus_productos:
+    - text: "Sí, en nuestra empresa valoramos la importancia de la educación y la interacción con nuestros clientes. Organizamos regularmente eventos, webinars y sesiones de formación para proporcionar información detallada sobre nuestros productos. Estos eventos son oportunidades únicas para que nuestros clientes aprendan más sobre las características, beneficios y posibilidades de personalización de nuestros productos.
+
+Mantente atento a nuestras redes sociales y a la sección de eventos en nuestro sitio web para conocer las fechas y temas de nuestros próximos eventos. Estamos comprometidos a brindar a nuestros clientes el conocimiento necesario para aprovechar al máximo sus experiencias con nuestros productos."
+  utter_La_empresa_ofrece_demos_o_pruebas_de_sus_productos_antes_de_la_compra:
+    - text: "¡Por supuesto! En nuestra empresa, valoramos la satisfacción de nuestros clientes. Ofrecemos demos y pruebas gratuitas de nuestros productos para que puedas experimentar sus características y beneficios antes de realizar una compra. Esto te brinda la oportunidad de tomar una decisión informada y asegurarte de que nuestros productos se adapten perfectamente a tus necesidades. Si estás interesado en probar alguno de nuestros productos, no dudes en ponerte en contacto con nuestro equipo, y estaremos encantados de coordinar una demostración personalizada para ti."
+  utter_Cual_es_la_vision_de_la_empresa:
+    - text: "Visualizamos un mundo interconectado en el que cada dispositivo, cada hogar y cada ciudad estén unidos a través del Internet de las Cosas."
+  utter_Cual_es_la_mision_de_la_empresa:
+    - text: "Nuestra misión es empoderar a individuos, hogares y comunidades para que tomen el control de su entorno a través de la tecnología del Internet de las Cosas."

@@ -1,0 +1,205 @@
+version: '3.1'
+
+intents:
+  - inicio
+  - activate_form_usuario
+  - afirmacion_informacion_producto
+  - negacion_informacion_producto
+  - despedida
+  # actions
+  - action_precio_producto
+  - action_caracteristicas_producto
+  - action_lista_productos
+  - action_informacion_producto
+  - action_pdf_producto
+
+  
+responses:
+
+  # Preguntas para formulario de registro usuario.
+  utter_ask_nombre_usuario:
+  - text: Ingrese su nombre.
+  utter_ask_correo_usuario:
+  - text: Ingrese su correo personal.
+  utter_ask_telefono_usuario:
+  - text: Ingrese su telefono personal.
+  utter_ask_direccion_usuario:
+  - text: Ingrese su dirección.
+
+  utter_please_rephrase:
+  - text: Lo siento, podrias reformular tu pregunta.
+
+  utter_formulario:
+  - text:  "¡Hola! Soy el asistente virtual de SmartTelecom. Antes de comenzar, ¿podrías proporcionarme tus datos, como tu nombre y correo, para ofrecerte una atención más personalizada?"
+
+  utter_ayuda_adicional_aleatoria:
+  - text:  "¿Hay algo más en lo que pueda ayudarte?"
+  - text: "¿Puedo hacer algo más por ti?"
+  - text: "¿Existe alguna otra pregunta que pueda responder?"
+  - text: "¿Hay algún otro servicio que estés buscando?"
+  - text: "¿Necesitas información adicional o ayuda con algo más?"
+  - text: "¿Hay alguna otra consulta que tengas en mente?"
+  - text: "¿Necesitas asistencia con algo más?"
+  - text: "Estoy aquí para ayudar. Si tienes más preguntas en el futuro, no dudes en preguntar. ¡Que tengas un gran día!"
+
+  utter_aleatorio_informacion_producto:
+  - text: ¿Estás interesado en conocer más acerca de otro producto?
+  - text: ¿Te gustaría obtener información sobre algún otro producto?
+  - text: ¿Tienes curiosidad acerca de algún otro artículo?
+  - text: ¿Deseas informarte sobre otro producto que podría interesarte?
+  - text: ¿Quisieras explorar más opciones de productos?
+  - text: ¿Te interesa averiguar sobre otros productos disponibles?
+  - text: ¿Buscas más información acerca de algún otro artículo?
+  - text: ¿Quisieras saber más sobre las alternativas de productos?
+  - text: ¿Te gustaría explorar las características de otros productos?
+
+  utter_frase_informacion_producto:
+  - text: Aquí te proporciono detalles acerca del artículo.
+  - text: A continuación, encontrarás información detallada sobre el producto.
+  - text: Te presento información completa acerca de este producto.
+  - text: A continuación, te ofrezco detalles exhaustivos sobre el producto en cuestión.
+  - text: Échale un vistazo a la información detallada que hemos recopilado sobre el producto.
+  - text: Te presentamos una descripción completa del producto para que tengas toda la información que necesitas.
+
+  utter_despedida:
+  - text:  ¡Hasta luego! Siempre estoy aquí si necesitas algo más. ¡Que tengas un buen día!
+
+  utter_afirmacion_informacion_producto:
+    - text: "Sobre que producto te gustaria consultar."
+
+  utter_negacion_informacion_producto:
+    - text: "Muy bien, si necesitas algo más no dudes en preguntar"
+
+entities:
+  - producto
+  # entidades formulario usuario.      
+  - nombre_usuario
+  - correo_usuario
+  - telefono_usuario
+  - direccion_usuario
+  - activate_form_usuario
+  # entidades productos.
+  - precio_producto
+  - descripcion_producto
+  - informacion_producto
+  - pdf_producto
+  - registro_completo
+
+slots:
+  
+  nombre_usuario:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_usuario
+           requested_slot: nombre_usuario
+
+  correo_usuario:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_usuario
+           requested_slot: correo_usuario
+
+  telefono_usuario:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_usuario
+           requested_slot: telefono_usuario
+
+  direccion_usuario:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: form_usuario
+           requested_slot: direccion_usuario
+
+  producto:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: producto # entidad producto
+
+  precio_producto:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: precio_producto # entidad producto
+
+  descripcion_producto:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: descripcion_producto # entidad producto
+
+  informacion_producto:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: informacion_producto # entidad producto
+
+  pdf_producto:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: pdf_producto # entidad producto
+
+  registro_completo:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: registro_completo
+
+
+forms:
+  form_usuario:
+    required_slots:
+      - nombre_usuario
+      - correo_usuario
+      - telefono_usuario
+      - direccion_usuario
+
+
+actions:
+  # Inicio
+  - action_inicio
+
+  # Formulario
+  - action_registrar_usuario
+
+  # Consultas a los productos
+  - action_precio_producto
+  - action_caracteristicas_producto
+  - action_lista_productos
+  - action_informacion_producto
+  - action_pdf_producto
+
+  # Validaciones 
+  - validate_form_usuario
+  - validate_nombre_usuario
+  - validate_correo_usuario
+
+
+
+  
+session_config: 
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+  # initial_state: null
+  # on_session_start:
+  # - form_usuario

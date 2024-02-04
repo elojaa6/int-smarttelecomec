@@ -1,0 +1,17 @@
+FROM rasa/rasa:latest
+WORKDIR /app
+COPY src /app/
+USER root
+RUN apt-get update && apt-get install -y python3-dev
+RUN python -m pip install --upgrade pip
+
+# COPY /app/data /data
+
+RUN rasa train --domain data/domain
+# RUN rasa train
+
+
+USER 1001
+
+CMD ["run", "--enable-api", "--ports", "--8060", "--cors", "*"]
+# CMD ["start","--actions","actions"]

@@ -1,0 +1,39 @@
+version: '3.1'
+
+stories:
+- story: Historia para Existen_opciones_de_personalización_para_adaptar_los_productos_a_necesidades_específicas
+  steps:
+  - intent: Existen_opciones_de_personalización_para_adaptar_los_productos_a_necesidades_específicas
+  - action: utter_Existen_opciones_de_personalización_para_adaptar_los_productos_a_necesidades_específicas
+- story: Historia para La_empresa_brinda_soporte_técnico_en_caso_de_problemas_con_los_productos_adquiridos
+  steps:
+  - intent: La_empresa_brinda_soporte_técnico_en_caso_de_problemas_con_los_productos_adquiridos
+  - action: utter_La_empresa_brinda_soporte_técnico_en_caso_de_problemas_con_los_productos_adquiridos
+- story: Historia para Hay_algún_programa_de_fidelidad_o_beneficios_para_clientes_recurrentes
+  steps:
+  - intent: Hay_algún_programa_de_fidelidad_o_beneficios_para_clientes_recurrentes
+  - action: utter_Hay_algún_programa_de_fidelidad_o_beneficios_para_clientes_recurrentes
+- story: Historia para Cómo_puedo_contactar_al_personal_de_ventas
+  steps:
+  - intent: Cómo_puedo_contactar_al_personal_de_ventas
+  - action: utter_Cómo_puedo_contactar_al_personal_de_ventas
+- story: Historia para Cuál_es_la_política_de_devolución_y_reembolso_en_caso_de_insatisfacción_con_un_producto
+  steps:
+  - intent: Cuál_es_la_política_de_devolución_y_reembolso_en_caso_de_insatisfacción_con_un_producto
+  - action: utter_Cuál_es_la_política_de_devolución_y_reembolso_en_caso_de_insatisfacción_con_un_producto
+- story: Historia para La_empresa_organiza_eventos_o_webinars_para_educar_a_los_clientes_sobre_sus_productos
+  steps:
+  - intent: La_empresa_organiza_eventos_o_webinars_para_educar_a_los_clientes_sobre_sus_productos
+  - action: utter_La_empresa_organiza_eventos_o_webinars_para_educar_a_los_clientes_sobre_sus_productos
+- story: Historia para La_empresa_ofrece_demos_o_pruebas_de_sus_productos_antes_de_la_compra
+  steps:
+  - intent: La_empresa_ofrece_demos_o_pruebas_de_sus_productos_antes_de_la_compra
+  - action: utter_La_empresa_ofrece_demos_o_pruebas_de_sus_productos_antes_de_la_compra
+- story: Historia para Cual_es_la_vision_de_la_empresa
+  steps:
+  - intent: Cual_es_la_vision_de_la_empresa
+  - action: utter_Cual_es_la_vision_de_la_empresa
+- story: Historia para Cual_es_la_mision_de_la_empresa
+  steps:
+  - intent: Cual_es_la_mision_de_la_empresa
+  - action: utter_Cual_es_la_mision_de_la_empresa

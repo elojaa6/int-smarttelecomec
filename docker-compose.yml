@@ -1,0 +1,155 @@
+version: "3"
+
+services:
+  chat-db:
+    image: postgres:10
+    container_name: chat-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    expose:
+      - "5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - local
+
+  pgadmin4:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin4
+    expose:
+      - "80"
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+      - PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION=True
+      - PGADMIN_CONFIG_LOGIN_BANNER="Authorised users only!"
+      - PGADMIN_CONFIG_CONSOLE_LOG_LEVEL=10
+    depends_on:
+      - chat-db
+    networks:
+      - local
+
+  spring_boot_app:
+    build:
+      context: spring
+      dockerfile: Dockerfile
+    image: spring_boot_image:latest
+    container_name: spring-boot-app
+    working_dir: /app
+    environment:
+      - spring.jpa.hibernate.ddl-auto=update
+      - spring.jpa.show-sql=true
+      - spring.datasource.url=jdbc:postgresql://chat-db:5432/smartelecomdb
+      - spring.datasource.username=${POSTGRES_USER}
+      - spring.datasource.password=${POSTGRES_PASSWORD}
+      - ruta.imagenes=/app/imagenes
+      - springdoc.swagger-ui.enabled=true
+      - springdoc.swagger-ui.path=/doc/swagger-ui.html
+    expose:
+      - "8080"
+    depends_on:
+      - chat-db
+    volumes:
+      - backend_data:/app
+      - datos-compartidos:/app/data
+      - imagenes_data:/app/imagenes
+    networks:
+      - local
+
+  rasa:
+    build:
+      context: rasa
+      dockerfile: Dockerfile.engine
+    container_name: rasa-server
+    image: rasa-engine:latest
+    expose:
+      - "5005"
+    volumes:
+      - datos-compartidos:/app/data
+    command:
+      - run
+      - --cors
+      - "*"
+      - --enable-api
+    depends_on:
+      - action-server
+    networks:
+      - local
+
+  action-server:
+    build:
+      context: rasa
+      dockerfile: Dockerfile.actions
+    container_name: rasa-action-server
+    image: rasa-actions:latest
+    expose:
+      - "5055"
+    networks:
+      - local
+
+  website:
+    build:
+      context: website
+      dockerfile: Dockerfile
+    container_name: website
+    image: website:latest
+    volumes:
+      - imagenes_data:/usr/share/nginx/media:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    expose:
+      - "80"
+    depends_on:
+      - spring_boot_app
+      - rasa
+      - pgadmin4
+    networks:
+      - local
+
+  nginx-proxy:
+    image: budry/jwilder-nginx-proxy-arm
+    container_name: nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - certs:/etc/nginx/certs:ro
+      - confd:/etc/nginx/conf.d
+      - vhostd:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - acme:/etc/acme.sh
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+    depends_on:
+      - website
+
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion:stable
+    container_name: letsencrypt
+    restart: always
+    volumes:
+      - certs:/etc/nginx/certs:rw
+      - confd:/etc/nginx/conf.d
+      - vhostd:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - acme:/etc/acme.sh
+
+volumes:
+  postgres-data:
+  backend_data:
+  datos-compartidos:
+  imagenes_data:
+  certs:
+  html:
+  vhostd:
+  confd:
+  acme:
+
+networks:
+  local:
+    driver: bridge

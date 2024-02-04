@@ -1,0 +1,12 @@
+version: '3.1'
+
+nlu:
+- intent: lista_productos
+  examples: |
+    - Cuáles son los artículos disponibles
+    -  Dame un listado de productos
+    - Enséñame el listado de productos
+    - Cuáles son las opciones de productos disponibles para la venta
+    -  Lista de productos
+    -  Catalogo de productos que ofrecen
+    - Me muestras un catálogo de los productos que ofrecen

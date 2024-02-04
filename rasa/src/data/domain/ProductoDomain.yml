@@ -1,0 +1,13 @@
+version: '3.1'
+
+intents:
+  - caracteristica_producto
+  - precio_producto
+  - productos_ofrecen
+  - producto
+  - lista_productos
+  - pdf_producto
+
+responses:
+  utter_productos_ofrecen:
+    - text: "Pues, en nuestra oferta nos especializamos en productos de IoT LoRaWAN. Contamos con una amplia gama de dispositivos diseñados para aprovechar al máximo esta tecnología, incluyendo sensores y otros dispositivos conectados. Nuestra línea de productos está orientada a proporcionar soluciones eficientes y avanzadas en el ámbito de la Internet de las Cosas (IoT) utilizando la tecnología LoRaWAN."

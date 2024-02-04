@@ -1,0 +1,33 @@
+recipe: default.v1
+
+language: es
+
+pipeline:
+- name: WhitespaceTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+- name: CountVectorsFeaturizer
+  analyzer: char_wb
+  min_ngram: 1
+  max_ngram: 4
+- name: DIETClassifier
+  epochs: 100
+  constrain_similarities: true
+- name: FallbackClassifier
+- name: "CRFEntityExtractor"
+  threshold: 0.8
+
+
+policies:
+- name: MemoizationPolicy
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+- name: RulePolicy
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true 
+  session_persistence: true
+assistant_id: 20230818-222808-oscillating-auslese

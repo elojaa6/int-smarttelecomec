@@ -1,0 +1,8 @@
+action_endpoint:
+  url: "http://action-server:5055/webhook"
+
+# action_endpoint:
+#   url: "http://rasa-actions-server/webhook"
+
+# action_endpoint:
+#   url: http://localhost:5055/webhook
