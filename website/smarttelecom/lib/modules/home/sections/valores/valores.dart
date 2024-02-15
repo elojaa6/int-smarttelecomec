@@ -9,11 +9,7 @@ class Valores extends GetResponsiveView {
 
   @override
   Widget build(BuildContext context) {
-    // bool isMobile = MediaQuery.of(context).size.width < 850 ? true : false;
-    // double width = MediaQuery.of(context).size.width;
     return Container(
-      // margin: EdgeInsets.fromLTRB(isMobile ? 15 : width / 10, isMobile ? 0 : 50,
-      //     isMobile ? 15 : width / 10, 50),
       width: double.infinity,
       decoration: const BoxDecoration(color: Color(0xFFE8F0F9)),
       child: _Panel(),
@@ -29,22 +25,16 @@ class _Panel extends GetResponsiveView {
     return ResponsiveGridRow(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        ...valores.map((e) => ResponsiveGridCol(
-              lg: 6,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: _TarjetaInwell(
-                    title: e.title, description: e.description, image: e.image),
-              ),
-            )),
-        // ResponsiveGridCol(
-        //     child: Card(
-        //         clipBehavior: Clip.hardEdge,
-        //         shape: RoundedRectangleBorder(
-        //             borderRadius: BorderRadius.circular(30)),
-        //         margin: const EdgeInsets.all(15),
-        //         elevation: 10,
-        //         child: Stack()))
+        ...valores.map(
+          (e) => ResponsiveGridCol(
+            lg: 6,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _TarjetaInwell(
+                  title: e.title, description: e.description, image: e.image),
+            ),
+          ),
+        ),
       ],
     );
   }

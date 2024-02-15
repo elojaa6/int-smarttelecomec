@@ -33,7 +33,7 @@ List<Valores> valores = [
     title: "Colaboración",
     description:
         "Fomentamos la colaboración interna y externa para lograr un impacto duradero.",
-    image: "images/valores/11.gif",
+    image: "images/valores/14.gif",
   ),
   Valores(
     id: 5,

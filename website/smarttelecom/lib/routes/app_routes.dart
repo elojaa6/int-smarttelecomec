@@ -1,8 +1,9 @@
 // ignore_for_file: constant_identifier_names
 
 class AppRoutes {
-  //*
-  static const String INTRO = '/';
+  //* SPASH
+  static const String SPASH = '/spash';
+
   //* INICIO
   static const String INICIO = '/inicio';
 
@@ -11,10 +12,9 @@ class AppRoutes {
 
   //* PRODUCTOS
   static const String PRODUCTOS = '/productos';
-  static const String SERVICIOS = '/servicios';
 
-  //*PLATAFORMA
-  static const String SMARTIOT = '/plataforma';
+  //* SERVICIOS
+  static const String SERVICIOS = '/servicios';
 
   //*CONTACTO
   static const String CONTACTO = '/contacto';

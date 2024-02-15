@@ -59,4 +59,15 @@ class ChatController extends GetxController {
       );
     }
   }
+
+  bool isFirstMessageSent = false;
+
+  Future<void> sendFirstMessage() async {
+    if (!isFirstMessageSent) {
+      var messages = await chatService.sendUserMessage('Hola');
+      isFirstMessageSent = true;
+      chat.addAll(messages!);
+      messageFocusNode.requestFocus();
+    }
+  }
 }

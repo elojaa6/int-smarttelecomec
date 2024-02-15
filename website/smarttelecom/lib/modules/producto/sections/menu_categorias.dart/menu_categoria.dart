@@ -17,6 +17,9 @@ class MenuCategoria extends GetResponsiveView<ProductoController> {
         child: ResponsiveGridRow(
           children: controller.categorias.map(
             (categorias) {
+              final isSelected = categorias.categoriaId ==
+                  controller.categoriaSeleccionadaId.value;
+
               return ResponsiveGridCol(
                 xs: 12,
                 md: 6,
@@ -30,6 +33,7 @@ class MenuCategoria extends GetResponsiveView<ProductoController> {
                   child: _CardType1(
                     label: categorias.nombreCategoria.toString(),
                     elevation: 5.0,
+                    isSelected: isSelected,
                   ),
                 ),
               );
@@ -44,27 +48,34 @@ class MenuCategoria extends GetResponsiveView<ProductoController> {
 class _CardType1 extends StatelessWidget {
   final String label;
   final double elevation;
+  final bool isSelected;
 
-  const _CardType1({required this.label, required this.elevation});
+  const _CardType1(
+      {required this.label, required this.elevation, required this.isSelected});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: elevation,
+      color: isSelected
+          ? Colors.blue
+          : null, // Color diferente si está seleccionado
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
         child: Column(
           children: [
-            /*Align(
-              alignment: Alignment.topRight,
-              child: IconButton(
-                icon: const Icon(Icons.more_vert_rounded),
-                onPressed: () {},
-              ),
-            ),*/
             Align(
               alignment: Alignment.center,
-              child: Text(label),
+              child: Text(
+                label,
+                style: TextStyle(
+                  color: isSelected
+                      ? Colors.white
+                      : Colors
+                          .black, // Color de texto diferente si está seleccionado
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                ),
+              ),
             )
           ],
         ),

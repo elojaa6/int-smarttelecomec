@@ -46,7 +46,6 @@ class _Panel extends GetResponsiveView<ProductoController> {
 
 class _Subcategoria extends GetResponsiveView<ProductoController> {
   final SubCategoria subcategoria;
-  final scrollController = ScrollController();
   _Subcategoria({required this.subcategoria});
 
   @override
@@ -63,6 +62,8 @@ class _Subcategoria extends GetResponsiveView<ProductoController> {
               children: [
                 ...subcategoria.subcategoriasHijas!.map(
                   (hijas) {
+                    final isSelected = hijas.subcategoriaId ==
+                        controller.subCategoriaSeleccionadaId.value;
                     return ResponsiveGridCol(
                       xs: 12,
                       md: 6,
@@ -76,6 +77,7 @@ class _Subcategoria extends GetResponsiveView<ProductoController> {
                         child: _CardType1(
                           label: hijas.nombreSubcategoria.toString(),
                           elevation: 5.0,
+                          isSelected: isSelected,
                         ),
                       ),
                     );
@@ -101,20 +103,34 @@ class _Subcategoria extends GetResponsiveView<ProductoController> {
 class _CardType1 extends StatelessWidget {
   final String label;
   final double elevation;
+  final bool isSelected;
 
-  const _CardType1({required this.label, required this.elevation});
+  const _CardType1(
+      {required this.label, required this.elevation, required this.isSelected});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: elevation,
+      color: isSelected
+          ? Colors.blue
+          : null, // Color diferente si está seleccionado
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
         child: Column(
           children: [
             Align(
               alignment: Alignment.center,
-              child: Text(label),
+              child: Text(
+                label,
+                style: TextStyle(
+                  color: isSelected
+                      ? Colors.white
+                      : Colors
+                          .black, // Color de texto diferente si está seleccionado
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                ),
+              ),
             )
           ],
         ),
@@ -199,7 +215,10 @@ class _Slide extends StatelessWidget {
                               content: Column(
                                 children: [
                                   Image.asset(
-                                    "/media/${producto.imagenesProductos!.first.name}",
+                                    //"/media/${producto.imagenesProductos!.first.name}",
+                                    "images/products/GS301.png",
+                                    /*height: 500,
+                                    width: 600,*/
                                     fit: BoxFit.cover,
                                   ),
                                   Text(producto.descripcionProducto.toString()),

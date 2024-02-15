@@ -25,10 +25,5 @@ class TopSection extends GetResponsiveView {
               isMobile ? 15 : width / 10, 50, isMobile ? 15 : width / 10, 50),
           child: GlassContent()),
     );
-    // return SafeArea(
-    //   child: Stack(
-    //     children: [Image.asset("images/backgroud.jpg")],
-    //   ),
-    // );
   }
 }

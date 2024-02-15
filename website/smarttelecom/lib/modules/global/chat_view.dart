@@ -136,24 +136,6 @@ class ChatMessage extends StatelessWidget {
                 ),
               if (buttons != null) //
                 _buildButtons(buttons!)
-              /*Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: buttons!.map((button) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (onButtonPressed != null) {
-                              onButtonPressed!(button['payload'] ?? '');
-                            }
-                          },
-                          child: Text(button['title'] ?? ''),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                )*/
             ],
           ),
         ),

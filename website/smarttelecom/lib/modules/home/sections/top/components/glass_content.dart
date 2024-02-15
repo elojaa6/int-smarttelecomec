@@ -39,12 +39,17 @@ class _TextComplete extends StatelessWidget {
     return ResponsiveGridRow(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //ResponsiveGridCol(child: const _TextSmall(text: "Bienvenido A!")),
           ResponsiveGridCol(
-            child: const _TextBold(text: "Bienvenido A!"),
+            child: const _TextBold(text: "Bienvenido"),
           ),
           ResponsiveGridCol(
-            child: const _TextSmall(text: "LoRaWAN@"),
+            child: const _TextSmall(
+                text: "Conectando tu mundo con soluciones IoT innovadoras."),
+          ),
+          ResponsiveGridCol(
+            child: const _TextSmall(
+                text:
+                    "Explora nuestra gama de productos y servicios diseñados para llevar la eficiencia y la inteligencia a tu vida diaria con la tecnología LoRaWAN®."),
           ),
         ]);
   }

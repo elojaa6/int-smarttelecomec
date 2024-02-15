@@ -52,8 +52,8 @@ class _Info extends StatelessWidget {
           lg: 4,
           child: const _CardTeam(
             image: "images/team/1.jpg",
-            title: "Hola ",
-            work: "Desarrollador",
+            title: "Alejandro Rivera",
+            work: "Cofundador y Director Técnico (CTO)",
             url: "https://www.google.com/",
           ),
         ),
@@ -61,8 +61,8 @@ class _Info extends StatelessWidget {
           lg: 4,
           child: const _CardTeam(
             image: "images/team/3.jpg",
-            title: "Hola 1",
-            work: "Ingeniera",
+            title: "Sofía Guerrero",
+            work: "Cofundadora y Directora Marketing (CMO)",
             url: "https://www.google.com/",
           ),
         ),
@@ -70,8 +70,8 @@ class _Info extends StatelessWidget {
           lg: 4,
           child: const _CardTeam(
             image: "images/team/2.jpg",
-            title: "Hola 2",
-            work: "Especialista",
+            title: "Carlos Martínez",
+            work: "Cofundador y Director Operaciones (COO)",
             url: "https://www.google.com/",
           ),
         ),

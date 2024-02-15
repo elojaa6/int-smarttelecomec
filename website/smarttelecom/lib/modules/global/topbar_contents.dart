@@ -8,8 +8,6 @@ import 'package:smarttelecom/routes/app_routes.dart';
 class TopBarContents extends StatefulWidget {
   const TopBarContents({super.key});
 
-  //AuthService authService = Get.find<AuthService>();
-
   @override
   topBarContentsState createState() => topBarContentsState();
 }

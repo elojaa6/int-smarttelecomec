@@ -10,12 +10,9 @@ class BlurBox extends GetResponsiveView {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        //Image.asset("images/st/ST 250.png"),
         const Spacer(),
         GlassContent(),
         const Spacer(),
-
-        //const SlidesShow()
       ],
     );
   }

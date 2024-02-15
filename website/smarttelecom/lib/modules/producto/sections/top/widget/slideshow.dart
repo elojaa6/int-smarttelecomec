@@ -18,7 +18,6 @@ class SlidesShowProduct extends StatelessWidget {
             builder: RectSwiperPaginationBuilder(
                 activeColor: Colors.white, color: Colors.white)),
         itemCount: tarjetas.length,
-        //itemBuilder: (context, index) => const _Slide(),
         itemBuilder: (context, index) => _Slide(tarjetas: tarjetas[index]),
         controller: SwiperController(),
       ),
@@ -39,28 +38,29 @@ class _Slide extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         Align(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Title(
-                      color: Colors.white,
-                      child: Text(
-                        tarjetas.title!,
-                        style: const TextStyle(color: Colors.white),
-                      )),
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Title(
+                    color: Colors.white,
+                    child: Text(
+                      tarjetas.title!,
+                      style: const TextStyle(color: Colors.white),
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  tarjetas.description!,
+                  style: const TextStyle(color: Colors.white),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    tarjetas.description!,
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                )
-              ],
-            ))
+              )
+            ],
+          ),
+        )
       ],
     );
   }

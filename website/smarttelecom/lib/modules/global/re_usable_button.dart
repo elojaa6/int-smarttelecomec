@@ -9,11 +9,8 @@ import 'package:url_launcher/url_launcher.dart';
 Future<void> externo(Uri url) async {
   try {
     launchUrl(url);
-    /*if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }*/
   } catch (e) {
-    print('Error al abrir la URL: $e');
+    throw Exception(e);
   }
 }
 

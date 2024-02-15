@@ -52,6 +52,7 @@ class HomePage extends GetResponsiveView<ChatController> {
           showModalBottomSheet(
               context: context,
               builder: (context) {
+                controller.sendFirstMessage();
                 return MyChat(chatController: controller);
               });
         },

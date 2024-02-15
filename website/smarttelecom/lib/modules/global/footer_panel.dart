@@ -41,71 +41,61 @@ class FooterPanel extends StatelessWidget {
                 child: footerGreyText(
                     'Encuéntranos en estas plataformas, respondemos en 1-2 días laborables.')),
             ResponsiveGridCol(
-                child: ResponsiveGridRow(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ResponsiveGridCol(
-                  md: 2,
-                  child: IconButtonCustom(
-                    icon: FontAwesomeIcons.facebook,
-                    onPressed: () {},
-                    overColor: Colors.blue,
+              child: ResponsiveGridRow(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ResponsiveGridCol(
+                    md: 2,
+                    child: IconButtonCustom(
+                      icon: FontAwesomeIcons.facebook,
+                      onPressed: () {},
+                      overColor: Colors.blue,
+                    ),
                   ),
-                ),
-                ResponsiveGridCol(
-                  md: 2,
-                  child: IconButtonCustom(
-                    icon: FontAwesomeIcons.instagram,
-                    onPressed: () {},
-                    overColor: Colors.pink,
+                  ResponsiveGridCol(
+                    md: 2,
+                    child: IconButtonCustom(
+                      icon: FontAwesomeIcons.instagram,
+                      onPressed: () {},
+                      overColor: Colors.pink,
+                    ),
                   ),
-                ),
-                ResponsiveGridCol(
-                  md: 2,
-                  child: IconButtonCustom(
-                    icon: FontAwesomeIcons.xTwitter,
-                    onPressed: () {},
-                    overColor: Colors.black,
+                  ResponsiveGridCol(
+                    md: 2,
+                    child: IconButtonCustom(
+                      icon: FontAwesomeIcons.xTwitter,
+                      onPressed: () {},
+                      overColor: Colors.black,
+                    ),
                   ),
-                ),
-                ResponsiveGridCol(
-                  md: 2,
-                  child: IconButtonCustom(
-                    icon: FontAwesomeIcons.threads,
-                    onPressed: () {},
-                    overColor: Colors.black,
+                  ResponsiveGridCol(
+                    md: 2,
+                    child: IconButtonCustom(
+                      icon: FontAwesomeIcons.threads,
+                      onPressed: () {},
+                      overColor: Colors.black,
+                    ),
                   ),
-                ),
-                ResponsiveGridCol(
-                  md: 2,
-                  child: IconButtonCustom(
-                    icon: FontAwesomeIcons.youtube,
-                    onPressed: () {},
-                    overColor: Colors.red,
+                  ResponsiveGridCol(
+                    md: 2,
+                    child: IconButtonCustom(
+                      icon: FontAwesomeIcons.youtube,
+                      onPressed: () {},
+                      overColor: Colors.red,
+                    ),
                   ),
-                ),
-                ResponsiveGridCol(
-                  md: 2,
-                  child: IconButtonCustom(
-                    icon: FontAwesomeIcons.whatsapp,
-                    onPressed: () {},
-                    overColor: Colors.green,
+                  ResponsiveGridCol(
+                    md: 2,
+                    child: IconButtonCustom(
+                      icon: FontAwesomeIcons.whatsapp,
+                      onPressed: () {},
+                      overColor: Colors.green,
+                    ),
                   ),
-                ),
-              ],
-            ))
+                ],
+              ),
+            )
           ],
-        ),
-      );
-
-  Widget floatingIconsButtons(String path, String hero) => Container(
-        margin: const EdgeInsets.all(5),
-        height: 40,
-        child: FloatingActionButton(
-          heroTag: hero,
-          backgroundColor: Colors.white,
-          child: colorLogoButton(path),
-          onPressed: () {},
         ),
       );
 

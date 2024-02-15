@@ -30,19 +30,18 @@ class ProductoController extends GetxController {
     try {
       categorias.value = (await categoriaService.getAllCategorias())!;
 
-      print(categorias);
+      categoriaSeleccionadaId.value = categorias.first.categoriaId!;
 
       subCategorias.value = (await subCategoriaService
-          .getSubCategoriasById(categorias.first.categoriaId!))!;
+          .getSubCategoriasById(categoriaSeleccionadaId.value))!;
 
-      productos.value = (await productoService.getAllProductosBySubCategoria(
-          subCategorias.first.subcategoriasHijas!.first.subcategoriaId!))!;
-      /*subCategorias.value =
-          (await subCategoriaService.getSubCategoriasById(1))!;*/
+      subCategoriaSeleccionadaId.value =
+          subCategorias.first.subcategoriasHijas!.first.subcategoriaId!;
 
-      //productosSubCategorias();
+      productos.value = (await productoService
+          .getAllProductosBySubCategoria(subCategoriaSeleccionadaId.value))!;
     } catch (e) {
-      print(e);
+      throw Exception(e);
     }
   }
 

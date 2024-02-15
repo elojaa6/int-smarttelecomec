@@ -75,7 +75,7 @@ class _TextComplete extends StatelessWidget {
         ),
         ResponsiveGridCol(
             child: manrope(
-                "Incididunt cupidatat id elit ullamco adipisicing ut ad. Commodo mollit quis labore nisi voluptate elit. Esse ea dolor aute ea sunt. Id duis ullamco adipisicing ex anim. Cillum ut exercitation veniam do minim laboris pariatur non labore esse occaecat esse. Eiusmod consequat dolore cillum elit ut exercitation aliqua aute quis dolore consequat id deserunt. Proident tempor non eu enim.",
+                "En el corazón de Cuenca, nace Smart Telecom, una empresa visionaria dedicada a revolucionar el mundo del Internet de las Cosas (IoT) a través de la innovadora tecnología LoRaWAN. Smart Telecom se embarca en la misión de transformar la vida cotidiana y las operaciones empresariales ofreciendo productos IoT de vanguardia. Desde soluciones para la agricultura inteligente hasta sistemas de monitorización urbana, su oferta promete no solo una mayor eficiencia y sostenibilidad sino también el nacimiento de ciudades más inteligentes. Con un compromiso incansable por la innovación y la calidad, Smart Telecom se posiciona rápidamente como líder en el mercado de Cuenca, marcando el inicio de una nueva era en conectividad y tecnología ambiental.",
                 context.width < 779 ? 15 : 18,
                 Colors.black))
       ],
