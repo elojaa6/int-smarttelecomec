@@ -12,8 +12,6 @@ services:
       - "5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    networks:
-      - telecomnt
 
   pgadmin4:
     image: dpage/pgadmin4:latest
@@ -29,8 +27,6 @@ services:
       - PGADMIN_CONFIG_CONSOLE_LOG_LEVEL=10
     depends_on:
       - chat-db
-    networks:
-      - telecomnt
 
   spring_boot_app:
     build:
@@ -55,9 +51,7 @@ services:
     volumes:
       - backend_data:/app
       - datos-compartidos:/app/data
-      - imagenes_data:/app/imagenes
-    networks:
-      - telecomnt
+      - ~/images/:/app/imagenes
 
   rasa:
     build:
@@ -76,8 +70,6 @@ services:
       - --enable-api
     depends_on:
       - action-server
-    networks:
-      - telecomnt
 
   action-server:
     build:
@@ -87,8 +79,6 @@ services:
     image: rasa-actions:latest
     expose:
       - "5055"
-    networks:
-      - telecomnt
 
   website:
     build:
@@ -97,64 +87,17 @@ services:
     container_name: website
     image: website:latest
     volumes:
-      - imagenes_data:/usr/share/nginx/media
+      - ~/images/:/usr/share/nginx/media
       - ./nginx.conf:/etc/nginx/nginx.conf
-    environment:
-      - VIRTUAL_HOST=smarttelecomec.com
-      - LETSENCRYPT_HOST=smarttelecomec.com
-      - LETSENCRYPT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
-    expose:
-      - "80"
+    ports:
+      - "80:80"
     depends_on:
       - spring_boot_app
       - rasa
       - pgadmin4
-    networks:
-      - telecomnt
-
-  nginx-proxy:
-    image: jwilder/nginx-proxy
-    container_name: nginx-proxy
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - certs:/etc/nginx/certs:ro
-      - vhostd:/etc/nginx/vhost.d
-      - html:/usr/share/nginx/html
-      - ./proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
-    labels:
-      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
-    depends_on:
-      - website
-    networks:
-      - telecomnt
-  letsencrypt:
-    image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: letsencrypt
-    restart: always
-    environment:
-      - NGINX_PROXY_CONTAINER=nginx-proxy
-      - TZ=America/Guayaquil
-    volumes:
-      - certs:/etc/nginx/certs:rw
-      - vhostd:/etc/nginx/vhost.d
-      - html:/usr/share/nginx/html
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - telecomnt
 
 volumes:
   postgres-data:
   backend_data:
   datos-compartidos:
   imagenes_data:
-  certs:
-  html:
-  vhostd:
-
-networks:
-  telecomnt:
-    external: true
