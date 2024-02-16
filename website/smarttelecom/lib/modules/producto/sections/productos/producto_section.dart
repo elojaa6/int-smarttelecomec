@@ -215,7 +215,7 @@ class _Slide extends StatelessWidget {
                               content: Column(
                                 children: [
                                   Image.asset(
-                                    "/media/${producto.imagenesProductos!.first.name}",
+                                    "/usr/share/nginx/media/${producto.imagenesProductos!.first.name}",
                                     /*height: 500,
                                     width: 600,*/
                                     fit: BoxFit.cover,
@@ -228,7 +228,7 @@ class _Slide extends StatelessWidget {
                           )
                         },
                     child: Image.asset(
-                      "/media/${producto.imagenesProductos!.first.name}",
+                      "/usr/share/nginx/media/${producto.imagenesProductos!.first.name}",
                       height: 150,
                       width: 150,
                       fit: BoxFit.cover,
