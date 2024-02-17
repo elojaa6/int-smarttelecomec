@@ -41,7 +41,7 @@ class NavBarCell extends StatelessWidget {
             leading: const Icon(Icons.computer),
             title: const Text('SmartIOT'),
             onTap: () {
-              externo(Uri.parse("https://www.google.com/"));
+              externo(Uri.parse("web.smarttelecomec.com/app/"));
             },
           ),
           const Divider(),

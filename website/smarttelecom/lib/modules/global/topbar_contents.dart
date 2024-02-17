@@ -192,7 +192,7 @@ class topBarContentsState extends State<TopBarContents> {
                 });
               },
               onTap: () {
-                externo(Uri.parse("https://www.google.com/"));
+                externo(Uri.parse("web.smarttelecomec.com/app/"));
               },
               child: Column(
                 mainAxisSize: MainAxisSize.min,

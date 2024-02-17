@@ -12,6 +12,8 @@ services:
       - "5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    networks:
+      nt-telecom:
 
   pgadmin4:
     image: dpage/pgadmin4:latest
@@ -27,6 +29,8 @@ services:
       - PGADMIN_CONFIG_CONSOLE_LOG_LEVEL=10
     depends_on:
       - chat-db
+    networks:
+      nt-telecom:
 
   spring_boot_app:
     build:
@@ -52,6 +56,8 @@ services:
       - backend_data:/app
       - datos-compartidos:/app/data
       - ~/images/:/app/imagenes
+    networks:
+      nt-telecom:
 
   rasa:
     build:
@@ -70,6 +76,8 @@ services:
       - --enable-api
     depends_on:
       - action-server
+    networks:
+      nt-telecom:
 
   action-server:
     build:
@@ -79,6 +87,8 @@ services:
     image: rasa-actions:latest
     expose:
       - "5055"
+    networks:
+      nt-telecom:
 
   website:
     build:
@@ -99,6 +109,8 @@ services:
       - spring_boot_app
       - rasa
       - pgadmin4
+    networks:
+      nt-telecom:
 
   nginx-proxy:
     image: jwilder/nginx-proxy
@@ -117,6 +129,8 @@ services:
       - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
     depends_on:
       - website
+    networks:
+      nt-telecom:
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: letsencrypt
@@ -129,12 +143,24 @@ services:
       - vhostd:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      nt-telecom:
 
 volumes:
   postgres-data:
+    name: telecom-data-odoo-web
   backend_data:
+    name: telecom-backend_data
   datos-compartidos:
-  imagenes_data:
+    name: telecom-datos-compartidos
   certs:
+    name: telecom-certs
   html:
+    name: telecom-html
   vhostd:
+    name: telecom-vhostd
+
+networks:
+  nt-telecom:
+    name: nt-telecom
+    external: true
