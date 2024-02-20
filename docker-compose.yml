@@ -100,8 +100,8 @@ services:
       - ~/images/:/usr/share/nginx/media
       - ./nginx.conf:/etc/nginx/nginx.conf
     environment:
-      - VIRTUAL_HOST=smarttelecomec.com,www.smarttelecomec.com,app.smarttelecomec.com
-      - LETSENCRYPT_HOST=smarttelecomec.com,www.smarttelecomec.com,app.smarttelecomec.com
+      - VIRTUAL_HOST=www.smarttelecomec.com,smarttelecomec.com
+      - LETSENCRYPT_HOST=www.smarttelecomec.com,smarttelecomec.com
       - LETSENCRYPT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
     expose:
       - "80"
