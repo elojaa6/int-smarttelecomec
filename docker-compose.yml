@@ -48,8 +48,8 @@ services:
       - ruta.imagenes=/app/imagenes
       - springdoc.swagger-ui.enabled=true
       - springdoc.swagger-ui.path=/doc/swagger-ui.html
-    ports:
-      - "8060:8080"
+    expose:
+      - "8080"
     depends_on:
       - chat-db
     volumes:
@@ -103,8 +103,8 @@ services:
       - VIRTUAL_HOST=smarttelecomec.com
       - LETSENCRYPT_HOST=smarttelecomec.com
       - LETSENCRYPT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
-    ports:
-      - "80:80"
+    expose:
+      - "80"
     depends_on:
       - spring_boot_app
       - rasa
