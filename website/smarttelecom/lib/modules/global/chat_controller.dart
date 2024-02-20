@@ -33,6 +33,11 @@ class ChatController extends GetxController {
   Future<String> getOrCreateUserId() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString('userId');
+    if (userId == null) {
+      const uuid = Uuid();
+      userId = uuid.v4(); // Genera un UUID v4
+      await prefs.setString('userId', userId);
+    }
     return userId;
   }
 
