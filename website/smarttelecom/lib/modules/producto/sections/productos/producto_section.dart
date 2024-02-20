@@ -216,8 +216,8 @@ class _Slide extends StatelessWidget {
                                 children: [
                                   Image.network(
                                     "https://smarttelecomec.com/media/${producto.imagenesProductos!.first.name}",
-                                    /*height: 500,
-                                    width: 600,*/
+                                    height: 330,
+                                    width: 400,
                                     fit: BoxFit.cover,
                                   ),
                                   Text(producto.descripcionProducto.toString()),
