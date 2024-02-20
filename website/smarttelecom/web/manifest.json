@@ -1,35 +1,33 @@
 {
-    "name": "smarttelecom",
-    "short_name": "smarttelecom",
+    "name": "SmartTelecom",
+    "short_name": "ST",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "theme_color": "#3599f6",
+    "background_color": "#9b9b9b",
+    "description": "Web Flutter Project for SmartTelecom",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "icons/Icon-192.png",
+            "src": "icons/icon-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "icons/Icon-512.png",
-            "sizes": "512x512",
+            "src": "icons/icon-256x256.png",
+            "sizes": "256x256",
             "type": "image/png"
         },
         {
-            "src": "icons/Icon-maskable-192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable"
+            "src": "icons/icon-348x348.png",
+            "sizes": "348x348",
+            "type": "image/png"
         },
         {
-            "src": "icons/Icon-maskable-512.png",
+            "src": "icons/icon-512x512.png",
             "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
+            "type": "image/png"
         }
     ]
 }
