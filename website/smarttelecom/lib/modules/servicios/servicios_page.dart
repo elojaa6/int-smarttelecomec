@@ -49,6 +49,9 @@ class ServiciosPage extends GetResponsiveView<ChatController> {
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          controller.getOrCreateUserId().then((id) {
+            controller.userId.value = id;
+          });
           showModalBottomSheet(
               context: context,
               builder: (context) {

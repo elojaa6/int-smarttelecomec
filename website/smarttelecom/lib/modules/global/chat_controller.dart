@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uuid/uuid.dart';
 import 'package:smarttelecom/data/model/chat.dart';
 import 'package:smarttelecom/data/services/remote/chat_service.dart';
 
@@ -15,14 +17,23 @@ class ChatController extends GetxController {
 
   final messageFormKey = GlobalKey<FormState>();
 
+  RxString userId = ''.obs;
+
   @override
   void onInit() {
     super.onInit();
+
     messageFocusNode.addListener(() {
       if (messageFocusNode.hasFocus) {
         Future.delayed(const Duration(milliseconds: 300), () => scrollDown());
       }
     });
+  }
+
+  Future<String> getOrCreateUserId() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? userId = prefs.getString('userId');
+    return userId;
   }
 
   @override
@@ -35,7 +46,8 @@ class ChatController extends GetxController {
 
   Future<void> sendUserMessage() async {
     if (messageController.text.isNotEmpty) {
-      var messages = await chatService.sendUserMessage(messageController.text);
+      var messages = await chatService.sendUserMessage(
+          messageController.text, userId.value);
       chat.addAll(messages!);
       messageController.clear();
       messageFocusNode.requestFocus();
@@ -64,7 +76,7 @@ class ChatController extends GetxController {
 
   Future<void> sendFirstMessage() async {
     if (!isFirstMessageSent) {
-      var messages = await chatService.sendUserMessage('Hola');
+      var messages = await chatService.sendUserMessage('Hola', userId.value);
       isFirstMessageSent = true;
       chat.addAll(messages!);
       messageFocusNode.requestFocus();

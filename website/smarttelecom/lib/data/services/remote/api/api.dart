@@ -35,7 +35,7 @@ class TelecomApi {
   }
 
   static Future<List<Map<String, dynamic>>> sendMessageToRasa(
-      String message) async {
+      String message, String userId) async {
     final List<Map<String, dynamic>> responseMessages = [];
 
     try {
@@ -46,7 +46,7 @@ class TelecomApi {
         options: Options(
           headers: {'Content-Type': 'application/json'},
         ),
-        data: {'sender': 'test_user', 'message': message},
+        data: {'sender': userId, 'message': message},
       );
 
       if (response.statusCode == 200) {
@@ -81,8 +81,6 @@ class TelecomApi {
           }
         }
 
-        print(
-            '_responseMessages después de la actualización: $responseMessages');
         return List<Map<String, dynamic>>.from(responseMessages);
       } else {
         return [];
