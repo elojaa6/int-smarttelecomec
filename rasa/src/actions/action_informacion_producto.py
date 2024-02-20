@@ -5,37 +5,31 @@ from rasa_sdk.events import SlotSet
 import requests
 from .action_producto_recomendacion import ProductoRecomendacion
 
-
 class ActionInformacionProducto(Action):
     def name(self) -> Text:
         return "action_informacion_producto"
 
-    def run(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher, 
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         # Obtener el slot del producto que el usuario haya ingresado.
         producto = tracker.get_slot("producto")
 
         if producto is None:
-            dispatcher.utter_message(
-                text="No se proporcionó un nombre de producto, por favor proporciona un nombre válido."
-            )
+            dispatcher.utter_message(text="No se proporcionó un nombre de producto, por favor proporciona un nombre válido.")
             ProductoRecomendacion.obtener_recomendaciones(dispatcher)
             return [SlotSet("precio_producto", None)]
 
-        producto = producto.upper()
+        producto = producto.upper() 
 
         # Realizar una solicitud GET al backend para buscar el producto por nombre.
-        url = f"http://spring-boot-app:8080/api/producto/obtenerProductoPorNombre/{producto}"
+        url = f'http://spring-boot-app:8080/api/producto/obtenerProductoPorNombre/{producto}'
         response = requests.get(url)
 
         if response.status_code == 200:
             data = response.json()
-
+            
             nombre_producto = data.get("nombreProducto")
             descripcion_producto = data.get("descripcionProducto")
             precio_producto = data.get("precioProducto")
@@ -52,16 +46,20 @@ class ActionInformacionProducto(Action):
             # Agregar información de imágenes
             if imagenes_producto:
                 mensaje += "Imágenes del Producto:\n"
-                image_urls = [imagen["filePath"] for imagen in imagenes_producto]
-                mensaje += "\n".join(image_urls)
+                image_urls = [imagen['filePath'] for imagen in imagenes_producto]
+                dispatcher.utter_message(text=mensaje, image=image_urls)
 
             # Agregar información de archivos PDF
             if archivos_pdf:
-                mensaje += "\n\nArchivos PDF Relacionados:\n"
-                for pdf in archivos_pdf:
-                    mensaje += f"- [{pdf['name']}]({pdf['archivoPdf']})\n"
+                mensaje += "Archivos PDF Relacionados:\n"
+                # for pdf in archivos_pdf:
+                    # mensaje += f"Nombre PDF: {pdf['name']}\n"
 
-            dispatcher.utter_message(text=mensaje)
+                # Agregar botones para abrir los PDF
+                buttons = [{"title": f"Abrir {pdf['name']}", "payload": pdf['archivoPdf']} for pdf in archivos_pdf]
+                dispatcher.utter_message(text=mensaje, buttons=buttons)
+            else:
+                dispatcher.utter_message(text=mensaje)
 
         else:
             ProductoRecomendacion.obtener_recomendaciones(dispatcher)
