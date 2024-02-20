@@ -24,7 +24,7 @@ RUN flutter config --enable-web
 ### The --web-renderer=auto flag allows Flutter to automatically choose the appropriate web renderer (HTML or Canvas) based on the platform and browser capabilities.
 #
 
-RUN flutter build web --base-href /website/ --no-tree-shake-icons --release --web-renderer=html
+RUN flutter build web --no-tree-shake-icons --release --web-renderer=html
 
 # Stage 2
 FROM nginx:latest
