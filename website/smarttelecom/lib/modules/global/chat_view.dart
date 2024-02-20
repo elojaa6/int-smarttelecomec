@@ -127,7 +127,7 @@ class ChatMessage extends StatelessWidget {
                   ),
                 ),
               if (image != null && image!.isNotEmpty)
-                Image.asset(
+                Image.network(
                   //"http://localhost:80$image",
                   //"images/products/GS301.png",
                   "https://smarttelecomec.com/media/${image}",
