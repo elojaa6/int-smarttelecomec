@@ -46,7 +46,7 @@ class ActionInformacionProducto(Action):
             # Agregar información de imágenes
             if imagenes_producto:
                 mensaje += "Imágenes del Producto:\n"
-                image_urls = [imagen['filePath'] for imagen in imagenes_producto]
+                image_urls = [imagen['name'] for imagen in imagenes_producto]
                 dispatcher.utter_message(text=mensaje, image=image_urls)
 
             # Agregar información de archivos PDF
