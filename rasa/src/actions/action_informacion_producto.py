@@ -4,6 +4,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 import requests
 from .action_producto_recomendacion import ProductoRecomendacion
+
 class ActionInformacionProducto(Action):
     def name(self) -> Text:
         return "action_informacion_producto"
@@ -46,19 +47,21 @@ class ActionInformacionProducto(Action):
             if imagenes_producto:
                 mensaje += "Imágenes del Producto:\n"
                 image_urls = [imagen['filePath'] for imagen in imagenes_producto]
-                mensaje += "\n".join(image_urls)
+                dispatcher.utter_message(text=mensaje, image=image_urls)
 
-                # Agregar información de archivos PDF
-                if archivos_pdf:
-                    for pdf in archivos_pdf:
-                        mensaje_pdf = (
-                            f"Nombre PDF: {pdf['name']}\n"
-                            f"Abrir {pdf['name']}: {pdf['archivoPdf']}"
-                        )
-                        dispatcher.utter_message(text=mensaje_pdf)
+            # Agregar información de archivos PDF
+            if archivos_pdf:
+                mensaje += "Archivos PDF Relacionados:\n"
+                # for pdf in archivos_pdf:
+                    # mensaje += f"Nombre PDF: {pdf['name']}\n"
 
+                # Agregar botones para abrir los PDF
+                buttons = [{"title": f"Abrir {pdf['name']}", "payload": pdf['archivoPdf']} for pdf in archivos_pdf]
+                dispatcher.utter_message(text=mensaje, buttons=buttons)
+            else:
+                dispatcher.utter_message(text=mensaje)
 
         else:
             ProductoRecomendacion.obtener_recomendaciones(dispatcher)
 
-        return [SlotSet("informacion_producto",None)]
+        return [SlotSet("informacion_producto", None)]
