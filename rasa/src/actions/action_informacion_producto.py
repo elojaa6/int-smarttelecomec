@@ -50,16 +50,19 @@ class ActionInformacionProducto(Action):
             )
 
             # Agregar información de imágenes
-
-            image_urls = [imagen["name"] for imagen in imagenes_producto]
-            # Agregar botones para abrir los PDF
-            buttons = [
-                {"title": f"Abrir {pdf['name']}", "payload": pdf["archivoPdf"]}
-                for pdf in archivos_pdf
-            ]
-            dispatcher.utter_message(
-                text=mensaje, json_message={"images": image_urls, "buttons": buttons}
-            )
+            if imagenes_producto:
+                image_urls = [imagen["name"] for imagen in imagenes_producto]
+                dispatcher.utter_message(text=mensaje, image=image_urls)
+            # Agregar información de archivos PDF
+            if archivos_pdf:
+                # Agregar botones para abrir los PDF
+                buttons = [
+                    {"title": f"Abrir {pdf['name']}", "payload": pdf["archivoPdf"]}
+                    for pdf in archivos_pdf
+                ]
+                dispatcher.utter_message(text=mensaje, buttons=buttons)
+            else:
+                dispatcher.utter_message(text=mensaje)
 
         else:
             ProductoRecomendacion.obtener_recomendaciones(dispatcher)

@@ -56,23 +56,18 @@ class TelecomApi {
         });
 
         for (var botMessage in response.data) {
-          List<Map<String, dynamic>> buttons = [];
-          List<String> images = [];
-          if (botMessage['custom']) {
-            buttons = botMessage['custom']['buttons'];
-            images = botMessage['custom']['images'];
-          } else {
-            buttons = botMessage['buttons'];
-          }
-          //if (botMessage != null && buttons is List) {
-          if (buttons.isNotEmpty) {
+          if (botMessage['buttons'] != null && botMessage['buttons'] is List) {
+            final List<Map<String, dynamic>> buttons =
+                List<Map<String, dynamic>>.from(botMessage['buttons']);
             responseMessages.add({
               'text': botMessage['text'] ?? '',
               'isUser': false,
               'buttons': buttons,
             });
-          } else if (images.isNotEmpty) {
+          } else if (botMessage['image'] != null &&
+              botMessage['image'] is List) {
             // Modifica el código para procesar correctamente la URL de la imagen
+            final List<String> images = List<String>.from(botMessage['image']);
             responseMessages.add({
               'text': botMessage['text'] ?? '',
               'isUser': false,
