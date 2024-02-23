@@ -5,7 +5,7 @@ class TelecomApi {
   //static const String _baseUrl = 'http://localhost/spring';
   //static const String _baseUrl = 'http://spring_boot_app:8080';
   //static const String _baseUrl = 'http://localhost:8060/';
-  static const String _baseUrl = 'https://smarttelecomec.com/spring';
+  static const String _baseUrl = 'https://www.smarttelecomec.com/spring';
 
   String sessionId = "";
 
@@ -41,7 +41,7 @@ class TelecomApi {
     try {
       final response = await _dio.post(
         //'http://rasa:5005/webhooks/rest/webhook',
-        'https://smarttelecomec.com/rasa/webhooks/rest/webhook',
+        'https://www.smarttelecomec.com/rasa/webhooks/rest/webhook',
         //'http://localhost/rasa/webhooks/rest/webhook',\
         options: Options(
           headers: {'Content-Type': 'application/json'},

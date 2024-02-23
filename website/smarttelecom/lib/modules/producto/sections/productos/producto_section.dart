@@ -215,7 +215,7 @@ class _Slide extends StatelessWidget {
                               content: Column(
                                 children: [
                                   Image.network(
-                                    "https://smarttelecomec.com/media/${producto.imagenesProductos!.first.name}",
+                                    "https://www.smarttelecomec.com/media/${producto.imagenesProductos!.first.name}",
                                     height: 330,
                                     width: 400,
                                     fit: BoxFit.cover,
@@ -228,7 +228,7 @@ class _Slide extends StatelessWidget {
                           )
                         },
                     child: Image.network(
-                      "https://smarttelecomec.com/media/${producto.imagenesProductos!.first.name}",
+                      "https://www.smarttelecomec.com/media/${producto.imagenesProductos!.first.name}",
                       height: 150,
                       width: 150,
                       fit: BoxFit.cover,

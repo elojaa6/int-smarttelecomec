@@ -130,7 +130,7 @@ class ChatMessage extends StatelessWidget {
                 Image.network(
                   //"http://localhost:80$image",
                   //"images/products/GS301.png",
-                  "https://smarttelecomec.com/media/${image}",
+                  "https://www.smarttelecomec.com/media/${image}",
                   height: 150,
                   width: 150,
                   fit: BoxFit.cover,
