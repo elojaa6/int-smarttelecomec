@@ -10,11 +10,11 @@ class MenuCategoria extends GetResponsiveView<ProductoController> {
   Widget build(BuildContext context) {
     final isMobile = context.width < 850 ? true : false;
     double width = context.width;
-    return Obx(
-      () => Container(
-        padding: EdgeInsets.symmetric(
-            horizontal: width / 10, vertical: isMobile ? 30 : 10),
-        child: ResponsiveGridRow(
+    return Container(
+      padding: EdgeInsets.symmetric(
+          horizontal: width / 10, vertical: isMobile ? 30 : 10),
+      child: Obx(
+        () => ResponsiveGridRow(
           children: controller.categorias.map(
             (categorias) {
               final isSelected = categorias.categoriaId ==

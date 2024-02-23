@@ -121,7 +121,7 @@ class FooterPanel extends StatelessWidget {
         textButtons('Servicios', const Color.fromARGB(255, 255, 255, 255),
             () => Get.toNamed(AppRoutes.SERVICIOS)),
         textButtons('SmartIOT', const Color.fromARGB(255, 255, 255, 255),
-            () => externo(Uri.parse("https://www.google.com/"))),
+            () => externo(Uri.parse(""https://www.smarttelecomec.com/web/""))),
         textButtons('Contacto', const Color.fromARGB(255, 255, 255, 255),
             () => Get.toNamed(AppRoutes.NOSOTROS)),
         textButtons('Zoho Mail', const Color.fromARGB(255, 255, 255, 255),
