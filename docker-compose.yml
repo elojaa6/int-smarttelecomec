@@ -49,7 +49,7 @@ services:
       - chat-db
     volumes:
       - backend_data:/app
-      - datos-compartidos:/app/data
+      - ~/int-smarttelecomec/rasa/src/data:/app/data
       - ~/images/:/app/imagenes
     networks:
       nt-telecom:
@@ -61,8 +61,6 @@ services:
     image: rasa-engine:latest
     expose:
       - "5005"
-    volumes:
-      - datos-compartidos:/app/data
     command:
       - run
       - --cors
