@@ -1,5 +1,4 @@
 version: "3"
-
 services:
   chat-db:
     image: postgres:10
@@ -14,7 +13,6 @@ services:
       - postgres-data:/var/lib/postgresql/data
     networks:
       nt-telecom:
-
   pgadmin4:
     image: dpage/pgadmin4:latest
     container_name: pgadmin4
@@ -31,7 +29,6 @@ services:
       - chat-db
     networks:
       nt-telecom:
-
   spring_boot_app:
     build:
       context: spring
@@ -46,8 +43,6 @@ services:
       - spring.datasource.username=${POSTGRES_USER}
       - spring.datasource.password=${POSTGRES_PASSWORD}
       - ruta.imagenes=/app/imagenes
-      - springdoc.swagger-ui.enabled=true
-      - springdoc.swagger-ui.path=/doc/swagger-ui.html
     expose:
       - "8080"
     depends_on:
@@ -58,7 +53,6 @@ services:
       - ~/images/:/app/imagenes
     networks:
       nt-telecom:
-
   rasa:
     build:
       context: rasa
@@ -78,7 +72,6 @@ services:
       - action-server
     networks:
       nt-telecom:
-
   action-server:
     build:
       context: rasa
@@ -89,7 +82,17 @@ services:
       - "5055"
     networks:
       nt-telecom:
-
+  swagger-ui:
+    container_name: swagger-ui
+    image: swaggerapi/swagger-ui:latest
+    environment:
+      URLS: '[{ url: "https://www.smarttelecomec.com/spring/v3/api-docs", name: "SmartTelecomEc" }]'
+    expose:
+      - "8080"
+    depends_on:
+      - spring_boot_app
+    networks:
+      nt-telecom:
   website:
     build:
       context: website
@@ -103,48 +106,47 @@ services:
       - VIRTUAL_HOST=www.smarttelecomec.com,smarttelecomec.com
       - LETSENCRYPT_HOST=www.smarttelecomec.com,smarttelecomec.com
       - LETSENCRYPT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
-    expose:
-      - "80"
+    ports:
+      - "80:80"
     depends_on:
       - spring_boot_app
       - rasa
       - pgadmin4
+      - swagger-ui
     networks:
       nt-telecom:
-
-  nginx-proxy:
-    image: jwilder/nginx-proxy
-    container_name: nginx-proxy
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - certs:/etc/nginx/certs:ro
-      - vhostd:/etc/nginx/vhost.d
-      - html:/usr/share/nginx/html
-    labels:
-      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
-    depends_on:
-      - website
-    networks:
-      nt-telecom:
-  letsencrypt:
-    image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: letsencrypt
-    restart: always
-    environment:
-      - NGINX_PROXY_CONTAINER=nginx-proxy
-      - TZ=America/Guayaquil
-    volumes:
-      - certs:/etc/nginx/certs:rw
-      - vhostd:/etc/nginx/vhost.d
-      - html:/usr/share/nginx/html
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      nt-telecom:
-
+  # nginx-proxy:
+  #   image: jwilder/nginx-proxy
+  #   container_name: nginx-proxy
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+  #     - certs:/etc/nginx/certs:ro
+  #     - vhostd:/etc/nginx/vhost.d
+  #     - html:/usr/share/nginx/html
+  #   labels:
+  #     - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+  #   depends_on:
+  #     - website
+  #   networks:
+  #     nt-telecom:
+  # letsencrypt:
+  #   image: jrcs/letsencrypt-nginx-proxy-companion
+  #   container_name: letsencrypt
+  #   restart: always
+  #   environment:
+  #     - NGINX_PROXY_CONTAINER=nginx-proxy
+  #     - TZ=America/Guayaquil
+  #   volumes:
+  #     - certs:/etc/nginx/certs:rw
+  #     - vhostd:/etc/nginx/vhost.d
+  #     - html:/usr/share/nginx/html
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #   networks:
+  #     nt-telecom:
 volumes:
   postgres-data:
     name: telecom-data-odoo-web
@@ -152,13 +154,12 @@ volumes:
     name: telecom-backend_data
   datos-compartidos:
     name: telecom-datos-compartidos
-  certs:
-    name: telecom-certs
-  html:
-    name: telecom-html
-  vhostd:
-    name: telecom-vhostd
-
+  # certs:
+  #   name: telecom-certs
+  # html:
+  #   name: telecom-html
+  # vhostd:
+  #   name: telecom-vhostd
 networks:
   nt-telecom:
     name: nt-telecom
